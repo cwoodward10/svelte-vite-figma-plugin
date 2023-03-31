@@ -1,5 +1,5 @@
 # svelte-vite-figma-plugin
-Template for a Figma Plugin using Svelte and Vite. ESBuild is used for the main plugin code. Plugin structure is based off of [@figma/create-widget](https://www.npmjs.com/package/@figma/create-widget).  
+Template for a Figma Plugin using Svelte and Vite. ESBuild is used for the main plugin code. Plugin structure (and the README below) is based off of [@figma/create-widget](https://www.npmjs.com/package/@figma/create-widget). I mainly removed React, added Svelte (and accompanying structure for Svelte), and renamed things to make it all work.
 
 ## Getting started
 
@@ -10,13 +10,13 @@ npm run dev
 ```
 
 1. Log in to your account and open the Figma desktop app
-2. You can open any existing FigJam document or create a new one.
-3. Go to Menu > Widgets > Development > "Import widget from manifest..."
+2. You can open any existing Figma document or create a new one.
+3. Go to Menu > Plugins > Development > "Import plugin from manifest..."
 4. Select the manifest.json in this folder
 
 ## Organization
 
-This widget uses:
+This plugin uses:
 
 - [esbuild](https://esbuild.github.io/) for bundling
 - [vite](https://vitejs.dev/) and [react](https://reactjs.org/) for the iframe
@@ -25,7 +25,7 @@ This widget uses:
 | file/folder   | description                                                                      |
 | ------------- | -------------------------------------------------------------------------------- |
 | manifest.json | The widget's [manifest.json](https://www.figma.com/widget-docs/widget-manifest/) |
-| widget-src/   | Contains the widget code                                                         |
+| plugin-src/   | Contains the widget code                                                         |
 | ui-src/       | Contains the iframe code                                                         |
 
 ### `npm run dev`
