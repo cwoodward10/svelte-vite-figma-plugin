@@ -43,3 +43,18 @@ This runs bundling with minification turned on. You should run this command befo
 ### `npm run test`
 
 This runs typechecking and makes sure that your widget builds without errors.
+
+
+# Custom Helpers
+
+This template implements some custom helper functions in both the UI and the Plugin Src in order to help with sending messages back and forth. 
+
+### Plugin Src
+
+The `PostToUi` function should be used to facilitate the sending of messages to the UI.
+
+### UI Src
+
+`ListenToFigma` is called in `main.ts` in order to tell the UI to listen to messages. It will then check against a singleton `FigmaListenerRegistry` array for any listeners registered anywhere in the UI. The registry is used because calling `onmessage` in multiple Svelte components will override the `onmessage` listeners set in other Svelte components. This allows for one global listener.
+
+`On` and `Once` will be used to register listeners to the `FigmaListenerRegistry` from anywhere within the UI.
