@@ -23,7 +23,7 @@ type FigmaListener = {
  * the app to check through when the Figma plugin code sends a message
  * to the UI.
  */
-const FigmaListenerRegistry: FigmaListener[] = [];
+let FigmaListenerRegistry: FigmaListener[] = [];
 export function ListenToFigma(e: MessageEvent) {
     const pluginMessage: {message: string, data: any} = e.data.pluginMessage;
 
@@ -35,11 +35,10 @@ export function ListenToFigma(e: MessageEvent) {
 
     if (listener.Active) {
         listener.Callback(pluginMessage.message, pluginMessage.data);
-    }
 
-    if (listen.type === 'Once') {
-        const i = FigmaListenerRegistry.findIndex(l => l.Name === pluginMessage.message);
-        FigmaListenerRegistry[i].Active = false;
+        if (listener.Type === 'Once') {
+            FigmaListenerRegistry = FigmaListenerRegistry.filter(l => l.Name != listener.Name);
+        }
     }
 }
 
@@ -65,7 +64,7 @@ export function Once(message: string, callback: (name: string, data: any) => voi
         return;
     }
 
-    registerListener(message, 'Infinite', callback);
+    registerListener(message, 'Once', callback);
 }
 
 function registerListener(
@@ -75,7 +74,7 @@ function registerListener(
 ) {
     FigmaListenerRegistry.push({
         Name: message,
-        Type: 'Infinite',
+        Type: type,
         Active: true,
         Callback: callback
     });
