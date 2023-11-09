@@ -24,7 +24,7 @@
   <Counter />
   <button
     on:click={() => {
-      SendToFigma('Close');
+      SendToFigma('close');
     }}
   >
     Close
