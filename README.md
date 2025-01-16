@@ -19,7 +19,7 @@ npm run dev
 This plugin uses:
 
 - [esbuild](https://esbuild.github.io/) for bundling
-- [vite](https://vitejs.dev/) and [react](https://reactjs.org/) for the iframe
+- [vite](https://vitejs.dev/) and [svelte](https://svelte.dev/) for the iframe
 - [typescript](https://www.typescriptlang.org/) for typechecking
 
 | file/folder   | description                                                                      |
